@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "TT Hoves";
+  src: local("TT Hoves Thin"), local("TT-Hoves-Thin"), url("./content/fonts/tthoves/TTHoves-Thin.woff2") format("woff2"), url("./content/fonts/tthoves/TTHoves-Thin.woff") format("woff"), url("./content/fonts/tthoves/TTHoves-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TT Hoves";
+  src: local("TT Hoves Light"), local("TT-Hoves-Light"), url("./content/fonts/tthoves/TTHoves-Light.woff2") format("woff2"), url("./content/fonts/tthoves/TTHoves-Light.woff") format("woff"), url("./content/fonts/tthoves/TTHoves-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TT Hoves";
+  src: local("TT Hoves Regular"), local("TT-Hoves-Regular"), url("./content/fonts/tthoves/TTHoves-Regular.woff2") format("woff2"), url("./content/fonts/tthoves/TTHoves-Regular.woff") format("woff"), url("./content/fonts/tthoves/TTHoves-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TT Hoves";
+  src: local("TT Hoves Medium"), local("TT-Hoves-Medium"), url("./content/fonts/tthoves/TTHoves-Medium.woff2") format("woff2"), url("./content/fonts/tthoves/TTHoves-Medium.woff") format("woff"), url("./content/fonts/tthoves/TTHoves-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TT Hoves";
+  src: local("TT Hoves DemiBold"), local("TT-Hoves-DemiBold"), url("./content/fonts/tthoves/TTHoves-DemiBold.woff2") format("woff2"), url("./content/fonts/tthoves/TTHoves-DemiBold.woff") format("woff"), url("./content/fonts/tthoves/TTHoves-DemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TT Hoves";
+  src: local("TT Hoves Bold"), local("TT-Hoves-Bold"), url("/content/fonts/tthoves/TTHoves-Bold.woff2") format("woff2"), url("/content/fonts/tthoves/TTHoves-Bold.woff") format("woff"), url("/content/fonts/tthoves/TTHoves-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100vh;
+}
+
+body {
+  font-family: "TT Hoves" !important;
+  background-color: #f5f9fc;
+}
+
+.site-wrapper {
+  max-width: 1250px;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=index.css.map */
