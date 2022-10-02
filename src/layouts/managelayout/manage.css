@@ -1,0 +1,191 @@
+.color-primary {
+  color: #5c60f5 !important;
+}
+
+.color-info {
+  color: #00d4ff !important;
+}
+
+.color-success {
+  color: #45daa8 !important;
+}
+
+.color-warning {
+  color: #ff8c00 !important;
+}
+
+.color-danger {
+  color: #ff4775 !important;
+}
+
+.back-primary {
+  background-color: #5c60f5 !important;
+}
+
+.back-info {
+  background-color: #00d4ff !important;
+}
+
+.back-success {
+  background-color: #45daa8 !important;
+}
+
+.back-warning {
+  background-color: #ff8c00 !important;
+}
+
+.back-danger {
+  background-color: #ff4775 !important;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px;
+    /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+.nav-scroller .nav {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.nav-scroller .nav-link {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.nav-scroller .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-scroller .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.bg-purple {
+  background-color: #6f42c1;
+}
+
+.manage-body {
+  padding-top: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.manage-body .manage-card {
+  box-shadow: 0 3px 3px -1px rgba(10, 22, 70, 0.1), 0 0 1px 0 rgba(10, 22, 70, 0.06);
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem;
+  background-color: #ffffff;
+  margin-bottom: 0.7rem;
+}
+.manage-body .manage-side-nav {
+  background-color: #ffffff;
+  box-shadow: 0 3px 3px -1px rgba(10, 22, 70, 0.1), 0 0 1px 0 rgba(10, 22, 70, 0.06);
+}
+.manage-body .manage-side-nav .manage-menu {
+  padding: 0.5rem;
+  margin: 0.5rem 0rem;
+}
+.manage-body .manage-side-nav .manage-menu .manage-menu-link {
+  color: #000000;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 10px;
+  margin-bottom: 0.7rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+}
+.manage-body .manage-side-nav .manage-menu .manage-menu-link i {
+  color: #5c60f5;
+  font-size: 0.9rem;
+}
+.manage-body .manage-content {
+  padding: 1rem !important;
+}
+.manage-body .manage-content table {
+  border-radius: 10px;
+  border: 1px solid white;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.manage-body .manage-content table thead {
+  background-color: #5c60f5 !important;
+  color: #ffffff;
+}
+.manage-body .manage-content table tbody {
+  border: 1px solid white;
+}
+.manage-body .manage-content table .view-competition {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 0.3rem;
+  border-radius: 19px;
+}
+
+.custom-file-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.file {
+  display: none;
+}
+
+.file-label {
+  width: 100%;
+  height: 100%;
+  padding: 0rem 1rem;
+}
+
+label {
+  font-size: 1rem;
+}
+
+.file-button {
+  font-size: 1rem;
+}
+
+.post-file-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.post-file-container .file-sn, .post-file-container .file-action {
+  padding: 0rem 0.5rem;
+}
+.post-file-container .file-name {
+  padding: 0rem 1rem;
+  width: 95%;
+  font-weight: bold;
+}
+.post-file-container .file-action {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  cursor: pointer;
+  width: 5%;
+  z-index: 2;
+}
+.post-file-container .file-action i {
+  z-index: 1;
+}
+
+/*# sourceMappingURL=manage.css.map */

@@ -1,7 +1,8 @@
 import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {v4 as uuidv4} from 'uuid';
-import {useRequest} from "../../../hooks";
+import {useRequest} from "../../hooks";
+import {BACK_END} from "../../config/keys";
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 
@@ -59,17 +60,11 @@ const NavigationPage = () => {
     }
 
     const addNavigationHandler = async () => {
-        console.log('NAVIGATION:', navigation);
-        console.log('SUB NAVIGATION:', subNavigations);
-
         const navigationObjs = {
             navigation: {...navigation},
             sub_navigations: [...subNavigations]
         }
-
-
-        const data = await request('/api/navigations/add', 'POST', navigationObjs);
-
+        const data = await request(`${BACK_END.HOST}/api/navigations/add`, 'POST', navigationObjs);
 
         if (data) {
             await Swal.fire(

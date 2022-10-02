@@ -1,6 +1,7 @@
 import {useState, useCallback, useEffect} from 'react';
-import {useRequest} from "../../../hooks";
-import {Spinner} from "../../../components";
+import {useRequest} from "../../hooks";
+import {Spinner} from "../../components";
+import {BACK_END} from "../../config/keys";
 import {Link} from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -8,12 +9,12 @@ const SponsorsPage = () => {
     const [sponsors, setSponsors] = useState(null);
     const {request} = useRequest();
     const fetchSponsors = useCallback(async () => {
-        const sponsorsData = await request('/api/sponsors', 'GET', null);
+        const sponsorsData = await request(`${BACK_END.HOST}/api/sponsors`, 'GET', null);
         setSponsors(sponsorsData);
     }, [request, setSponsors]);
     const deleteSponsor = async (_id) => {
         console.log('delete sponsor is worked', _id);
-        const data = await request('/api/sponsors/delete', 'POST', {
+        const data = await request(`${BACK_END.HOST}/api/sponsors/delete`, 'POST', {
             sponsor_id: _id
         });
         if (data) {

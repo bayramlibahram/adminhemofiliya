@@ -1,13 +1,14 @@
 import {useEffect, useState, useCallback} from 'react';
 import Axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {Spinner} from "../../../components";
+import {Spinner} from "../../components";
 import DatePicker from "react-datepicker";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build";
 import {v4 as uuidv4} from "uuid";
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+import {BACK_END} from "../../config/keys";
 
 
 const postViewRender = value => {
@@ -44,7 +45,7 @@ const PostFrom = ({navs, post, imageUrl, postSubImages, postFiles, postId}) => {
     const reader = new FileReader();
     const [formPostId] = useState(postId);
     const [postForm, setPostForm] = useState(post);
-    const [navigations, setNavigations] = useState(navs);
+    const [navigations] = useState(navs);
     const [subNavigations, setSubNavigations] = useState([]);
     const [postImgUrl, setPostImgUrl] = useState(imageUrl);
     const [postImg, setPostImg] = useState("");
@@ -86,7 +87,7 @@ const PostFrom = ({navs, post, imageUrl, postSubImages, postFiles, postId}) => {
 
     const deletePostDbSubImage = async id => {
         try {
-            const response = await Axios.post('/api/posts/delete/subimage', {
+            const response = await Axios.post(`${BACK_END.HOST}/api/posts/delete/subimage`, {
                 sub_img_id: id,
                 post_id: postId
             });
@@ -196,7 +197,7 @@ const PostFrom = ({navs, post, imageUrl, postSubImages, postFiles, postId}) => {
 
     const deletePostDbFile = async (id) => {
         try {
-            const response = await Axios.post(`/api/posts/delete/file`, {
+            const response = await Axios.post(`${BACK_END.HOST}/api/posts/delete/file`, {
                 file_id: id,
                 post_id: postId
             });
@@ -317,7 +318,7 @@ const PostFrom = ({navs, post, imageUrl, postSubImages, postFiles, postId}) => {
             allowOutsideClick: false
         });
 
-        const response = await Axios.post('/api/posts/edit', formData);
+        const response = await Axios.post(`${BACK_END.HOST}/api/posts/edit`, formData);
         const data = response.data;
         if (data.status === 'SUCCESS') {
             Swal.fire('Uğurlu əməliyyat!', `${data.message.az}`, 'success').then(() => {
@@ -810,7 +811,7 @@ const EditPostPage = () => {
     }, []);
 
     const fetchedPost = useCallback(async () => {
-        const response = await Axios.get(`/api/posts/post/manage/${postId}`);
+        const response = await Axios.get(`${BACK_END.HOST}/api/posts/post/manage/${postId}`);
         const {post, subImages, files} = response.data;
         setPost({
             ...post,

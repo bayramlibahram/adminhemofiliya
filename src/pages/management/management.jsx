@@ -3,8 +3,9 @@ import Axios from 'axios';
 import {Link, useNavigate} from "react-router-dom";
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import {CKEditor} from '@ckeditor/ckeditor5-react';
-import {titleIdGenerate} from "../../../utils/titleidgenerate";
+import {titleIdGenerate} from "../../utils/titleidgenerate";
 import Swal from 'sweetalert2';
+import {BACK_END} from "../../config/keys";
 import 'sweetalert2/src/sweetalert2.scss';
 
 
@@ -95,7 +96,7 @@ const ManagementPage = () => {
             allowOutsideClick: false
         });
 
-        const response = await Axios.post('/api/managements/add', formData);
+        const response = await Axios.post(`${BACK_END.HOST}/api/managements/add`, formData);
         const data = response.data;
 
         if (data.status === 'SUCCESS') {

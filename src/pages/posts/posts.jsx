@@ -1,18 +1,18 @@
 import {useCallback, useEffect, useState} from "react";
-import {useRequest} from "../../../hooks";
-import {Spinner} from "../../../components";
+import {useRequest} from "../../hooks";
+import {Spinner} from "../../components";
 import {Link} from "react-router-dom";
-import {convertedDate} from "../../../utils/dateconvert";
+import {convertedDate} from "../../utils/dateconvert";
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+import {BACK_END} from "../../config/keys";
 
 const postCase = post_case => {
-    if(post_case === "banner") {
+    if (post_case === "banner") {
         return (
             <span className="badge text-bg-primary">Manşet</span>
         )
-    }
-    else {
+    } else {
         return (
             <span className="badge text-bg-dark">Sadə</span>
         )
@@ -22,13 +22,11 @@ const postCase = post_case => {
 const PostsPage = () => {
     const [posts, setPosts] = useState(null);
     const {request} = useRequest();
-
     const fetchPosts = useCallback(async () => {
-        const data = await request("/api/posts", "GET", null);
+        const data = await request(`${BACK_END.HOST}/api/posts`, "GET", null);
         setPosts(data);
     }, [request]);
     const deletePost = async _id => {
-
         Swal.fire({
             title: 'Məqaləni silməyə əminsinizmi ?',
             text: "Diqqət məqalə silinəcək!",
@@ -37,13 +35,12 @@ const PostsPage = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Bəli',
-            cancelButtonText:'Xeyr'
+            cancelButtonText: 'Xeyr'
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const deletedPost = await request('/api/posts/delete/post', 'POST', {
+                const deletedPost = await request(`${BACK_END.HOST}/api/posts/delete/post`, 'POST', {
                     post_id: _id
                 });
-
                 if (deletedPost.status === 'SUCCESS') {
                     Swal.fire('Uğurlu əməliyyat!', `${deletedPost.message}`, 'success')
                         .then(() => {
@@ -54,17 +51,12 @@ const PostsPage = () => {
                             console.log(err);
                         });
                 }
-
-
             }
         });
-
     }
-
     useEffect(() => {
         fetchPosts();
     }, [fetchPosts]);
-
     if (!posts) return <Spinner/>
     return <PostList posts={posts} deletePost={deletePost}/>
 };
@@ -124,6 +116,5 @@ const PostList = ({posts, deletePost}) => {
         </>
     );
 }
-
 
 export default PostsPage;

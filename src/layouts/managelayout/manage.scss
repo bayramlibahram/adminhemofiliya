@@ -1,0 +1,217 @@
+$white: #ffffff;
+$primary-color-1: #035bf7;
+$primary-color-2: #0344b4;
+$primary-color-3: #5c60f5;
+$primary-color-4: #45daa8;
+$primary-color-5: #ff8c00;
+$primary-color-6: #ff4775;
+
+//Shadow's
+$shadow-1: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+$shadow-2: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+.color-primary {
+  color: $primary-color-3 !important;
+}
+
+.color-info {
+  color: #00d4ff !important;
+}
+
+.color-success {
+  color: $primary-color-4 !important;
+}
+
+.color-warning {
+  color: $primary-color-5 !important;
+}
+
+.color-danger {
+  color: $primary-color-6 !important;
+}
+
+.back-primary {
+  background-color: $primary-color-3 !important;
+}
+
+.back-info {
+  background-color: #00d4ff !important;
+}
+
+.back-success {
+  background-color: $primary-color-4 !important;
+}
+
+.back-warning {
+  background-color: $primary-color-5 !important;
+}
+
+.back-danger {
+  background-color: $primary-color-6 !important;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+
+.nav-scroller .nav {
+  color: rgba(255, 255, 255, .75);
+}
+
+.nav-scroller .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.nav-scroller .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-scroller .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.bg-purple {
+  background-color: #6f42c1;
+}
+
+
+.manage-body {
+  padding-top:5rem;
+  padding-left:1rem;
+  padding-right:1rem;
+  .manage-card {
+    box-shadow: 0 3px 3px -1px rgb(10 22 70 / 10%), 0 0 1px 0 rgb(10 22 70 / 6%);
+    border: none;
+    border-radius: 10px;
+    padding: .7rem;
+    background-color: $white;
+    margin-bottom: .7rem;
+  }
+
+  .manage-side-nav {
+    background-color: $white;
+    box-shadow: 0 3px 3px -1px rgb(10 22 70 / 10%), 0 0 1px 0 rgb(10 22 70 / 6%);
+
+    .manage-menu {
+      padding: 0.5rem;
+      margin: .5rem 0rem;
+
+      .manage-menu-link {
+        color: #000000;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        border-radius: 10px;
+        margin-bottom: .7rem;
+        padding: .7rem;
+        font-size: 1rem;
+
+        i {
+          color: $primary-color-3;
+          font-size: .9rem;
+        }
+      }
+    }
+  }
+
+  .manage-content {
+    padding: 1rem !important;
+
+    table {
+      border-radius: 10px;
+      border: 1px solid white;
+
+      thead {
+        background-color: $primary-color-3 !important;
+        color: $white;
+      }
+
+      tbody {
+        border: 1px solid white;
+      }
+
+      font-size: .9rem;
+      border-radius: 10px;
+      border: 1px solid white;
+
+      .view-competition {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        padding: .3rem;
+        border-radius: 19px;
+      }
+    }
+
+  }
+}
+
+.custom-file-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+}
+
+.file {
+  display: none;
+}
+
+.file-label {
+  width: 100%;
+  height: 100%;
+  padding: 0rem 1rem;
+}
+
+label {
+  font-size: 1rem;
+}
+
+.file-button {
+  font-size: 1rem;
+}
+
+.post-file-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .file-sn, .file-action {
+    padding: 0rem .5rem;
+  }
+
+  .file-name {
+    padding: 0rem 1rem;
+    width: 95%;
+    font-weight: bold;
+  }
+
+  .file-action {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    cursor: pointer;
+    width: 5%;
+    z-index: 2;
+    i{
+      z-index: 1;
+    }
+  }
+
+}

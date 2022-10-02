@@ -1,9 +1,10 @@
 import Axios from "axios";
 import {useCallback, useEffect, useState} from "react";
-import {Spinner} from "../../../components";
+import {Spinner} from "../../components";
 import {Link} from "react-router-dom";
-import {convertedDate} from "../../../utils/dateconvert";
+import {convertedDate} from "../../utils/dateconvert";
 import Swal from 'sweetalert2';
+import {BACK_END} from "../../config/keys";
 import 'sweetalert2/src/sweetalert2.scss';
 
 const ManagementList = ({managements, deleteManagment}) => {
@@ -65,9 +66,8 @@ const ManagementList = ({managements, deleteManagment}) => {
 const ManagementsPage = () => {
 
     const [managements, setManagements] = useState(null);
-
     const fetchManagements = useCallback(async () => {
-        const fetchedManagements = await Axios.get('/api/managements');
+        const fetchedManagements = await Axios.get(`${BACK_END.HOST}/api/managements`);
         setManagements(fetchedManagements.data);
     }, []);
 
@@ -83,7 +83,7 @@ const ManagementsPage = () => {
             cancelButtonText: 'Xeyr'
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const deleteManagement = await Axios.post('/api/managements/delete', {
+                const deleteManagement = await Axios.post(`${BACK_END.HOST}/api/managements/delete`, {
                     management_id: _id
                 });
 

@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
+import {BACK_END} from "../../config/keys";
 import axios from "axios";
 import Swal from "sweetalert2";
 import 'sweetalert2/src/sweetalert2.scss';
@@ -30,14 +31,12 @@ const SponsorPage = () => {
     const onSubmit = async event => {
         event.preventDefault();
 
-        console.log('on submit is worked!');
-
         const formData = new FormData();
         formData.append('sponsor_name', sponsorForm.sponsor_name);
         formData.append('sponsor_url', sponsorForm.sponsor_url);
         formData.append('sponsor_image_file', sponsorImageFile);
 
-        const response = await axios.post('/api/sponsors/add', formData);
+        const response = await axios.post(`${BACK_END.HOST}/api/sponsors/add`, formData);
         const data = response.data;
 
         if (data.status === 'SUCCESS') {

@@ -1,16 +1,17 @@
 import {useCallback, useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {Spinner} from "../../../components";
+import {Spinner} from "../../components";
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import {CKEditor} from '@ckeditor/ckeditor5-react';
 import DatePicker from "react-datepicker";
-import {useRequest} from "../../../hooks";
+import {useRequest} from "../../hooks";
 import {v4 as uuidv4} from 'uuid';
 import axios from "axios";
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 import "react-datepicker/dist/react-datepicker.css";
 import "./post.css";
+import {BACK_END} from "../../config/keys";
 
 const postViewRender = (value) => {
     switch (value) {
@@ -227,10 +228,7 @@ const PostPage = () => {
         const sub_navigations = navigations.filter(nav => nav.navigation_value === event.target.value);
         setSubNavigations([...sub_navigations[0].sub_navigations]);
 
-        console.log('sss', sub_navigations[0].sub_navigations);
-
         if (!sub_navigations[0].sub_navigations || sub_navigations[0].sub_navigations.length === 0) {
-
             setForm({
                 ...form, post_category: event.target.value, post_sub_category: "empty"
             });
@@ -283,7 +281,7 @@ const PostPage = () => {
         });
 
 
-        const response = await axios.post('/api/posts/add', formData);
+        const response = await axios.post(`${BACK_END.HOST}/api/posts/add`, formData);
         const data = response.data;
 
         if (data.status === 'SUCCESS') {
@@ -303,7 +301,7 @@ const PostPage = () => {
     }
 
     const fetchNavigations = useCallback(async () => {
-        const fetchedNavigations = await request('/api/navigations', 'GET', null);
+        const fetchedNavigations = await request(`${BACK_END.HOST}/api/navigations`, 'GET', null);
 
         setNavigations([...fetchedNavigations]);
         setSubNavigations([...navigations[0].sub_navigations]);

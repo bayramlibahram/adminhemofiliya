@@ -1,0 +1,110 @@
+$brand-white: #fff;
+$brand-color: #ec174c;
+
+.auth-container {
+  display: flex;
+  border-radius: 12px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 60px;
+  height: 400px;
+  background-color:white;
+  .auth-logo {
+    flex: 1;
+    order: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  .auth-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    order: 1;
+  }
+
+  .auth-card {
+    padding: 2rem;
+    border-radius: 12px;
+
+    .auth-header {
+      display: flex;
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: $brand-color;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .auth-bottom {
+      .auth-input {
+        margin-bottom: 1.5rem;
+        padding: .7rem;
+        border-radius: 30px;
+        border: 1.6px $brand-color solid;
+      }
+
+      .auth-button {
+        margin-bottom: 1.5rem;
+        padding: .7rem;
+        border: none;
+        outline: none;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        border-radius: 30px;
+        width: 100%;
+        background-color: $brand-color;
+        background-image: linear-gradient(120deg, $brand-color 0%, #3742fa 100%);
+        color: #fff;
+
+
+      }
+
+      hr {
+        height: .7px;
+        color: #2f3542;
+        margin: 0rem !important;
+        margin-bottom: 1rem !important;
+      }
+
+      .auth-forget {
+        text-decoration: none;
+        color: #5352ed;
+        font-size: 1rem;
+      }
+
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .auth-container {
+    padding: 20px;
+    margin: 1rem 0rem;
+    height: auto;
+
+    .auth-logo {
+      display: none;
+    }
+
+    .auth-wrapper {
+      .auth-card {
+        .auth-header {
+          margin-bottom: 1rem;
+        }
+
+        .auth-bottom {
+
+          .auth-input,
+          .auth-button {
+            padding: .5rem;
+            margin-bottom: 1rem;
+          }
+
+        }
+      }
+    }
+  }
+}

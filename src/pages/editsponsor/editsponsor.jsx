@@ -1,8 +1,9 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {Link, useNavigate, useParams} from "react-router-dom";
 import Axios from "axios";
 import Swal from "sweetalert2";
-import {Spinner} from "../../../components";
+import {Spinner} from "../../components";
+import {BACK_END} from "../../config/keys";
 
 const EditSponsorPage = () => {
 
@@ -11,9 +12,8 @@ const EditSponsorPage = () => {
     const [imgUrl, setImgUrl] = useState("");
 
     const fetchSponsor = useCallback(async () => {
-        const fetchedSponsor = await Axios.get(`/api/sponsors/${sponsorId}`);
+        const fetchedSponsor = await Axios.get(`${BACK_END.HOST}/api/sponsors/${sponsorId}`);
         setSponsor(fetchedSponsor.data);
-        console.log(fetchedSponsor.data)
         setImgUrl(`${process.env.PUBLIC_URL}/content/images/${sponsor.sponsor_image_name}`);
     }, [sponsorId]);
 
@@ -22,8 +22,6 @@ const EditSponsorPage = () => {
             .then(() => console.log('Sponsor fetched successfully'))
             .catch(err => console.log(err));
     }, [fetchSponsor])
-
-    console.log(sponsorId);
 
     if (!sponsor) return <Spinner/>;
 
@@ -59,15 +57,13 @@ const SponsorForm = ({sponsor, imageUrl, sponsorId}) => {
     const onSubmit = async event => {
         event.preventDefault();
 
-        console.log('on submit is worked!');
-
         const formData = new FormData();
         formData.append('sponsor_id', formSponsorId);
         formData.append('sponsor_name', sponsorForm.sponsor_name);
         formData.append('sponsor_url', sponsorForm.sponsor_url);
         formData.append('sponsor_image_file', sponsorImage);
 
-        const response = await Axios.post('/api/sponsors/edit', formData);
+        const response = await Axios.post(`${BACK_END.HOST}/api/sponsors/edit`, formData);
         const data = response.data;
 
         if (data.status === 'SUCCESS') {

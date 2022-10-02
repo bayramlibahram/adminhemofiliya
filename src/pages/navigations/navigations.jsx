@@ -1,8 +1,9 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
-import {useRequest} from "../../../hooks";
-import {Spinner} from "../../../components";
+import {useRequest} from "../../hooks";
+import {Spinner} from "../../components";
 import Swal from "sweetalert2";
+import {BACK_END} from "../../config/keys";
 
 const NavigationsPage = () => {
 
@@ -27,7 +28,7 @@ const NavigationsPage = () => {
             cancelButtonText:'Xeyr'
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const deletedPost = await request('/api/navigations/delete', 'POST', {
+                const deletedPost = await request(`${BACK_END.HOST}/api/navigations/delete`, 'POST', {
                     nav_id: _id
                 });
 
@@ -52,9 +53,7 @@ const NavigationsPage = () => {
     }, [fetchNavigations])
 
 
-    if (!navigations) {
-        return <Spinner/>
-    }
+    if (!navigations) return <Spinner/>;
 
     return (
         <>

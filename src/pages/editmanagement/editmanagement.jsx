@@ -1,12 +1,14 @@
 import {useEffect, useState, useCallback} from 'react';
 import Axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {Spinner} from "../../../components";
+import {Spinner} from "../../components";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build";
 import Swal from 'sweetalert2';
+import {BACK_END} from "../../config/keys";
+
 import 'sweetalert2/src/sweetalert2.scss';
-import {titleIdGenerate} from "../../../utils/titleidgenerate";
+
 
 const ManagementForm = ({managementId, management, imageUrl}) => {
     const [formManagementId] = useState(managementId);
@@ -80,7 +82,7 @@ const ManagementForm = ({managementId, management, imageUrl}) => {
             allowOutsideClick: false
         });
 
-        const response = await Axios.post('/api/managements/edit', formData);
+        const response = await Axios.post(`${BACK_END.HOST}/api/managements/edit`, formData);
         const data = response.data;
 
         if (data.status === 'SUCCESS') {
