@@ -4,6 +4,7 @@ import {useRequest} from "../../hooks";
 import {Spinner} from "../../components";
 import Swal from "sweetalert2";
 import {BACK_END} from "../../config/keys";
+import Axios from "axios";
 
 const NavigationsPage = () => {
 
@@ -11,9 +12,9 @@ const NavigationsPage = () => {
     const {request} = useRequest();
 
     const fetchNavigations = useCallback(async () => {
-        const fetchedNavigations = await request('/api/navigations', 'GET', null);
-        setNavigations(fetchedNavigations);
-    }, [request]);
+        const response = await Axios.get(`${BACK_END.HOST}/api/navigations`);
+        setNavigations(response.data);
+    }, []);
 
     const deleteNavigation = async _id => {
         console.log(_id);
