@@ -688,7 +688,7 @@ const PostFrom = ({navs, post, imageUrl, postSubImages, postFiles, postId}) => {
                         {subImages.length > 0 && subImages.map(subimg => {
                             return (
                                 <div key={subimg._id} className="col-12 col-md-2 mb-2">
-                                    <img src={`${process.env.PUBLIC_URL}/content/images/${subimg.sub_image_filename}`}
+                                    <img src={`${BACK_END.HOST}/${subimg.sub_image_filename}`}
                                          className="d-block w-100" alt=""/>
                                     <div className="d-grid gap-2 mt-1">
                                         <button
@@ -839,7 +839,7 @@ const EditPostPage = () => {
             post_img: post.post_img,
             post_date: new Date(post.post_date)
         });
-        setImgUrl(`${process.env.PUBLIC_URL}/content/images/${post.post_img}`);
+        setImgUrl(`${BACK_END.HOST}/${post.post_img}`);
         setPostSubImages([...subImages]);
         setPostFiles([...files]);
     }, [postId]);

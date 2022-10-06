@@ -14,7 +14,7 @@ const EditSponsorPage = () => {
     const fetchSponsor = useCallback(async () => {
         const fetchedSponsor = await Axios.get(`${BACK_END.HOST}/api/sponsors/${sponsorId}`);
         setSponsor(fetchedSponsor.data);
-        setImgUrl(`${process.env.PUBLIC_URL}/content/images/${sponsor.sponsor_image_name}`);
+        setImgUrl(`${BACK_END.HOST}/${sponsor.sponsor_image_name}`);
     }, [sponsorId]);
 
     useEffect(() => {

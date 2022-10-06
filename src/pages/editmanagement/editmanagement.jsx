@@ -6,7 +6,6 @@ import {CKEditor} from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build";
 import Swal from 'sweetalert2';
 import {BACK_END} from "../../config/keys";
-
 import 'sweetalert2/src/sweetalert2.scss';
 
 
@@ -302,10 +301,10 @@ const EditManagementPage = () => {
     const [imgUrl, setImgUrl] = useState("");
 
     const fetchManagement = useCallback(async () => {
-        const fetchedManagement = await Axios.get(`/api/managements/management/manage/${managementId}`);
+        const fetchedManagement = await Axios.get(`${BACK_END.HOST}/api/managements/management/manage/${managementId}`);
         console.log(fetchedManagement.data);
         setManagement(fetchedManagement.data);
-        setImgUrl(`${process.env.PUBLIC_URL}/content/images/${fetchedManagement.data.management_image}`);
+        setImgUrl(`${BACK_END.HOST}/${fetchedManagement.data.management_image}`);
 
     }, [managementId]);
 
