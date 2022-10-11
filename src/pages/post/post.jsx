@@ -214,7 +214,9 @@ const PostPage = () => {
 
     const addFileHandler = async event => {
         setFormFiles([...formFiles, {
-            id: uuidv4(), file_original_name: event.target.files[0].name, file_input: event.target.files[0]
+            id: uuidv4(),
+            file_original_name: event.target.files[0].name,
+            file_input: event.target.files[0]
         }]);
     }
 

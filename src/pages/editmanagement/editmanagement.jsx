@@ -104,6 +104,8 @@ const ManagementForm = ({managementId, management, imageUrl}) => {
 
     }
 
+    console.log(formManagementImgUrl);
+
     return (
         <form onSubmit={onSubmit} encType="multipart/form-data">
             <div className="manage-card">
@@ -318,13 +320,13 @@ const EditManagementPage = () => {
 
     if (!management) return <Spinner/>;
     return (
-        <div>
+        <>
             <ManagementForm
                 managementId={managementId}
                 management={management}
                 imageUrl={imgUrl}
             />
-        </div>
+        </>
     );
 };
 
