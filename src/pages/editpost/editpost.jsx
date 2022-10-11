@@ -9,6 +9,7 @@ import {v4 as uuidv4} from "uuid";
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 import {BACK_END} from "../../config/keys";
+// import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
 
 
 const postViewRender = value => {
@@ -508,7 +509,9 @@ const PostFrom = ({navs, post, imageUrl, postSubImages, postFiles, postId}) => {
                             <label htmlFor="post_title_az">Kontent - AZ</label>
                             <CKEditor
                                 editor={Editor}
+
                                 config={{
+
                                     mediaEmbed: {
                                         previewsInData: true
                                     }
