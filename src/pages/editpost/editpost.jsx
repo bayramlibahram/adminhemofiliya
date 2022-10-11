@@ -806,7 +806,7 @@ const EditPostPage = () => {
     const [postFiles, setPostFiles] = useState(null);
 
     const fetchNavigations = useCallback(async () => {
-        const fetchedNavigations = await Axios.get('/api/navigations');
+        const fetchedNavigations = await Axios.get(`${BACK_END.HOST}/api/navigations`);
         setNavigations([...fetchedNavigations.data]);
     }, []);
 

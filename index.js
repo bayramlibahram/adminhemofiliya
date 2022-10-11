@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const config = require("config");
+
+
 if (process.env.NODE_ENV === 'production') {
 
     app.use(express.static(path.resolve(__dirname, 'build')));
