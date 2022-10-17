@@ -59,7 +59,6 @@ const PostsPage = () => {
             .catch(err => console.log(err));
     }, [fetchPosts]);
 
-    if (!posts) return <Spinner/>
     return <PostList posts={posts} deletePost={deletePost}/>;
 };
 
@@ -74,7 +73,7 @@ const PostList = ({posts, deletePost}) => {
                     </Link>
                 </div>
             </div>
-            <div className="manage-card">
+            {posts ? <div className="manage-card">
                 <div className="table-responsive">
                     <table className="table">
                         <thead className="thead-dark">
@@ -115,7 +114,7 @@ const PostList = ({posts, deletePost}) => {
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> : <Spinner/>}
         </>
     );
 }

@@ -26,33 +26,34 @@ const ManageLayout = ({children}) => {
 
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link active" to="/dashboard">
-                                    İnzibatçı panel
-                                </Link>
-                            </li>
+
                             <li className="nav-item">
                                 <Link className="nav-link" to="/posts">
+                                    <i className="fas fa-newspaper me-2 text-dark"></i>
                                     Məqalələr
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/managements">
+                                    <i className="fas fa-users me-2 text-dark"></i>
                                     Rəhəbərlik
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/sponsors">
+                                    <i className="fas fa-layer-group me-2 text-dark"></i>
                                     Sponsorlar
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/navigations">
+                                    <i className="fas fa-ellipsis-h me-2 text-dark"></i>
                                     Bölmələr
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <a href="#" className="nav-link" onClick={logoutHandler}>
+                                    <i className="fas fa-door-open me-2 text-dark"></i>
                                     Çıxış
                                 </a>
                             </li>
