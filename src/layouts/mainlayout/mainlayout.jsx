@@ -1,7 +1,5 @@
 import {Link} from "react-router-dom";
-import {useCallback, useEffect, useState} from "react";
 import logo from "../../content/images/logo.png";
-import octaPharmaLogo from "../../content/images/octapharma-logo.png";
 
 const MainLayout = ({children}) => {
 
@@ -12,21 +10,29 @@ const MainLayout = ({children}) => {
                     <div className="site-wrapper">
                         <div className="header-top-container">
                             <div className="social-links">
-                                <a className="social-link" href="https://www.facebook.com/www.hemofiliya.az/"
-                                   target="_blank">
+                                <a
+                                    className="social-link"
+                                    href="https://www.facebook.com/www.hemofiliya.az/"
+                                    rel="noreferrer"
+                                    target="_blank">
                                     <i className="fa-brands fa-facebook-f"></i>
                                 </a>
-                                <a className="social-link" href="https://youtube.com/channel/UCNjxQ1Bc8Xam0vNz1Cve1jA"
-                                   target="_blank">
+                                <a
+                                    className="social-link"
+                                    href="https://youtube.com/channel/UCNjxQ1Bc8Xam0vNz1Cve1jA"
+                                    rel="noreferrer"
+                                    target="_blank">
                                     <i className="fa-brands fa-youtube"></i>
                                 </a>
                                 <a className="social-link"
                                    href="https://twitter.com/ayazhuseynov88?t=JFdMDPFQFr0I4suhp9FKtg&s=09"
+                                   rel="noreferrer"
                                    target="_blank">
                                     <i className="fa-brands fa-twitter"></i>
                                 </a>
                                 <a className="social-link"
                                    href="https://instagram.com/hemophilia_azerbaijan_?igshid=YmMyMTA2M2Y="
+                                   rel="noreferrer"
                                    target="_blank">
                                     <i className="fa-brands fa-instagram"></i>
                                 </a>
@@ -58,21 +64,28 @@ const MainLayout = ({children}) => {
                             </div>
                             <div className="footer-bottom-item">
                                 <div className="social-links">
-                                    <a className="social-link" href="https://www.facebook.com/www.hemofiliya.az/"
-                                       target="_blank">
+                                    <a
+                                        className="social-link"
+                                        href="https://www.facebook.com/www.hemofiliya.az/"
+                                        rel="noreferrer"
+                                        target="_blank">
                                         <i className="fa-brands fa-facebook-f"></i>
                                     </a>
                                     <a className="social-link"
-                                       href="https://youtube.com/channel/UCNjxQ1Bc8Xam0vNz1Cve1jA" target="_blank">
+                                       href="https://youtube.com/channel/UCNjxQ1Bc8Xam0vNz1Cve1jA"
+                                       rel="noreferrer"
+                                       target="_blank">
                                         <i className="fa-brands fa-youtube"></i>
                                     </a>
                                     <a className="social-link"
                                        href="https://twitter.com/ayazhuseynov88?t=JFdMDPFQFr0I4suhp9FKtg&s=09"
+                                       rel="noreferrer"
                                        target="_blank">
                                         <i className="fa-brands fa-twitter"></i>
                                     </a>
                                     <a className="social-link"
                                        href="https://instagram.com/hemophilia_azerbaijan_?igshid=YmMyMTA2M2Y="
+                                       rel="noreferrer"
                                        target="_blank">
                                         <i className="fa-brands fa-instagram"></i>
                                     </a>
@@ -80,11 +93,11 @@ const MainLayout = ({children}) => {
                             </div>
                             <div className="footer-bottom-item">
                                 <p>
-                                    Designed by <a target="_blank" href="https://bahrambayramli.com">Bahram Bayramli</a>
+                                    Designed by <a target="_blank" href="https://bahrambayramli.com" rel="noreferrer">Bahram Bayramli</a>
                                 </p>
                                 <p>&</p>
                                 <p>
-                                    <a target="_blank" href="https://qht.az">QHT.AZ</a>
+                                    <a target="_blank" href="https://qht.az" rel="noreferrer">QHT.AZ</a>
                                 </p>
                             </div>
                         </div>

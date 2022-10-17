@@ -3,7 +3,7 @@ import AuthContext from "../../context/auth.context";
 import LayoutManager from "../../layouts/layoutmanager";
 import useAuth from "../../hooks/auth.hook";
 const App = () => {
-    const {userId, token, login, logout, ready} = useAuth();
+    const {userId, token, login, logout} = useAuth();
     const isAuthenticated = !!token;
     return (
         <Router>
