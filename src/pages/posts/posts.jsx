@@ -79,6 +79,7 @@ const PostList = ({posts, deletePost}) => {
                         <th scope="col">#</th>
                         <th scope="col">Başlıq</th>
                         <th scope="col">Bölmə</th>
+                        <th scope="col">Baxış sayı</th>
                         <th scope="col">Tarix</th>
                         <th scope="col"></th>
                     </tr>
@@ -90,6 +91,7 @@ const PostList = ({posts, deletePost}) => {
                                 <td>{index + 1}</td>
                                 <td style={{width: '600px'}}>{post.post_title_az}</td>
                                 <td>{postCase(post.post_case)}</td>
+                                <td><span className="badge text-bg-success">{post.post_view_count}</span></td>
                                 <td>{convertedDate(post.post_date)}</td>
                                 <td>
                                     <Link
