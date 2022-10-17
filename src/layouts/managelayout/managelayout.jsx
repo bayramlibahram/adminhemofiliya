@@ -13,7 +13,7 @@ const ManageLayout = ({children}) => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" aria-label="Main navigation">
+            <nav className="navbar navbar-expand-lg fixed-top navbar-expand-lg bg-light shadow-sm" aria-label="Main navigation">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/dashboard">
                         <i className="fa-solid fa-solar-panel"></i>
