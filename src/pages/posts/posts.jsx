@@ -1,11 +1,11 @@
 import {useCallback, useEffect, useState} from "react";
-import {useRequest} from "../../hooks";
+import Axios from "axios";
 import {Spinner} from "../../components";
 import {Link} from "react-router-dom";
 import {convertedDate} from "../../utils/dateconvert";
+import {BACK_END} from "../../config/keys";
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
-import {BACK_END} from "../../config/keys";
 
 const postCase = post_case => {
     if (post_case === "banner") {
@@ -21,11 +21,10 @@ const postCase = post_case => {
 
 const PostsPage = () => {
     const [posts, setPosts] = useState(null);
-    const {request} = useRequest();
     const fetchPosts = useCallback(async () => {
-        const data = await request(`${BACK_END.HOST}/api/posts`, "GET", null);
-        setPosts(data);
-    }, [request]);
+        const response = await Axios.get(`${BACK_END.HOST}/api/posts`);
+        setPosts(response.data);
+    }, []);
     const deletePost = async _id => {
         Swal.fire({
             title: 'Məqaləni silməyə əminsinizmi ?',
@@ -36,29 +35,32 @@ const PostsPage = () => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Bəli',
             cancelButtonText: 'Xeyr'
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                const deletedPost = await request(`${BACK_END.HOST}/api/posts/delete/post`, 'POST', {
-                    post_id: _id
-                });
-                if (deletedPost.status === 'SUCCESS') {
-                    Swal.fire('Uğurlu əməliyyat!', `${deletedPost.message}`, 'success')
-                        .then(() => {
-                            const newPosts = posts.filter(post => post._id !== _id);
-                            setPosts([...newPosts]);
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        });
+        })
+            .then(async (result) => {
+                if (result.isConfirmed) {
+                    const response = await Axios.post(`${BACK_END.HOST}/api/posts/delete/post`, {
+                        post_id: _id
+                    });
+                    if (response.data.status === 'SUCCESS') {
+                        Swal.fire('Uğurlu əməliyyat!', `${response.data.message}`, 'success')
+                            .then(() => {
+                                setPosts([...posts.filter(post => post._id !== _id)]);
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            });
+                    }
                 }
-            }
-        });
+            });
     }
     useEffect(() => {
-        fetchPosts();
+        fetchPosts()
+            .then(() => console.log('Posts fetched successfully'))
+            .catch(err => console.log(err));
     }, [fetchPosts]);
+
     if (!posts) return <Spinner/>
-    return <PostList posts={posts} deletePost={deletePost}/>
+    return <PostList posts={posts} deletePost={deletePost}/>;
 };
 
 const PostList = ({posts, deletePost}) => {
@@ -94,10 +96,7 @@ const PostList = ({posts, deletePost}) => {
                                 <td><span className="badge text-bg-success">{post.post_view_count}</span></td>
                                 <td>{convertedDate(post.post_date)}</td>
                                 <td>
-                                    <Link
-                                        className="btn btn-outline-primary btn-sm"
-                                        to={`/post/${post._id}`}
-                                    >
+                                    <Link className="btn btn-outline-primary btn-sm" to={`/post/${post._id}`}>
                                         <i className="fa-solid fa-pencil"></i>
                                     </Link>
                                     <button
