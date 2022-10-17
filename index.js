@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 const start = () => {
     try {
         const PORT = config.get("PORT");
-        app.listen(3001, () => {
+        app.listen(PORT, () => {
             console.log(`Server started on ${PORT}`);
         });
     } catch (err) {
