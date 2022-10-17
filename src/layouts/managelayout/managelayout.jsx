@@ -8,7 +8,7 @@ const ManageLayout = ({children}) => {
     const auth = useContext(AuthContext);
     const logoutHandler = async () => {
         auth.logout();
-        navigate('/auth', {replace: true})
+        navigate('/', {replace: true});
     }
 
     return (

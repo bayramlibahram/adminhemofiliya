@@ -95,18 +95,20 @@ const PostList = ({posts, deletePost}) => {
                                     <td>{postCase(post.post_case)}</td>
                                     <td><span className="badge text-bg-success">{post.post_view_count}</span></td>
                                     <td>{convertedDate(post.post_date)}</td>
-                                    <td className="d-flex">
-                                        <Link className="btn btn-outline-primary btn-sm" to={`/post/${post._id}`}>
-                                            <i className="fa-solid fa-pencil"></i>
-                                        </Link>
-                                        <button
-                                            className="btn btn-sm btn-outline-danger ms-2"
-                                            onClick={async () => {
-                                                await deletePost(post._id)
-                                            }}
-                                        >
-                                            <i className="fa-solid fa-trash-can"></i>
-                                        </button>
+                                    <td>
+                                        <div className="d-flex">
+                                            <Link className="btn btn-outline-primary btn-sm" to={`/post/${post._id}`}>
+                                                <i className="fa-solid fa-pencil"></i>
+                                            </Link>
+                                            <button
+                                                className="btn btn-sm btn-outline-danger ms-2"
+                                                onClick={async () => {
+                                                    await deletePost(post._id)
+                                                }}
+                                            >
+                                                <i className="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             )
