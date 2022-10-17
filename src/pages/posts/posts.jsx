@@ -75,44 +75,46 @@ const PostList = ({posts, deletePost}) => {
                 </div>
             </div>
             <div className="manage-card">
-                <table className="table">
-                    <thead className="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Başlıq</th>
-                        <th scope="col">Bölmə</th>
-                        <th scope="col">Baxış sayı</th>
-                        <th scope="col">Tarix</th>
-                        <th scope="col"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {posts.map((post, index) => {
-                        return (
-                            <tr key={post._id}>
-                                <td>{index + 1}</td>
-                                <td style={{width: '600px'}}>{post.post_title_az}</td>
-                                <td>{postCase(post.post_case)}</td>
-                                <td><span className="badge text-bg-success">{post.post_view_count}</span></td>
-                                <td>{convertedDate(post.post_date)}</td>
-                                <td>
-                                    <Link className="btn btn-outline-primary btn-sm" to={`/post/${post._id}`}>
-                                        <i className="fa-solid fa-pencil"></i>
-                                    </Link>
-                                    <button
-                                        className="btn btn-sm btn-outline-danger ms-2"
-                                        onClick={async () => {
-                                            await deletePost(post._id)
-                                        }}
-                                    >
-                                        <i className="fa-solid fa-trash-can"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        )
-                    })}
-                    </tbody>
-                </table>
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead className="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Başlıq</th>
+                            <th scope="col">Bölmə</th>
+                            <th scope="col">Baxış sayı</th>
+                            <th scope="col">Tarix</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {posts.map((post, index) => {
+                            return (
+                                <tr key={post._id}>
+                                    <td>{index + 1}</td>
+                                    <td style={{width: '500px'}}>{post.post_title_az}</td>
+                                    <td>{postCase(post.post_case)}</td>
+                                    <td><span className="badge text-bg-success">{post.post_view_count}</span></td>
+                                    <td>{convertedDate(post.post_date)}</td>
+                                    <td className="d-flex">
+                                        <Link className="btn btn-outline-primary btn-sm" to={`/post/${post._id}`}>
+                                            <i className="fa-solid fa-pencil"></i>
+                                        </Link>
+                                        <button
+                                            className="btn btn-sm btn-outline-danger ms-2"
+                                            onClick={async () => {
+                                                await deletePost(post._id)
+                                            }}
+                                        >
+                                            <i className="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </>
     );

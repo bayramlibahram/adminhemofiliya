@@ -13,17 +13,18 @@ const ManageLayout = ({children}) => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg fixed-top navbar-expand-lg bg-light shadow-sm" aria-label="Main navigation">
+            <nav className="navbar navbar-expand-lg fixed-top shadow-sm bg-light" aria-label="Toggle navigation">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/dashboard">
                         <i className="fa-solid fa-solar-panel"></i>
                     </Link>
-                    <button className="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                             aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                    <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link className="nav-link active" to="/dashboard">
