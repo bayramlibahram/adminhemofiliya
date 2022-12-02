@@ -11,6 +11,7 @@ import {
     ManageManagements,
     ManageManagement,
     ManageEditManagement,
+    ManageEditNavigation,
     AuthPage
 } from "../pages";
 
@@ -25,7 +26,7 @@ export const adminRoutes = [
     {path: '/sponsor/:id', component: <ManageEditSponsor/>, exact: true},
     {path: '/navigations', component: <ManageNavigations/>, exact: true},
     {path: '/navigation', component: <ManageNavigation/>, exact: true},
-    {path: '/navigation/:id', component: <ManageNavigation/>, exact: true},
+    {path: '/navigation/:id', component: <ManageEditNavigation/>, exact: true},
     {path: '/managements', component: <ManageManagements/>, exact: true},
     {path: '/management', component: <ManageManagement/>, exact: true},
     {path: '/management/:id', component: <ManageEditManagement/>, exact: true},

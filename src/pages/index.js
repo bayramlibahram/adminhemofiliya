@@ -11,6 +11,7 @@ import EditSponsor from "./editsponsor";
 import Managements from "./managements";
 import Management from "./management";
 import EditManagement from "./editmanagement";
+import EditNavigationPage from "./editnavigation";
 
 export {
     AuthPage,
@@ -25,5 +26,6 @@ export {
     EditSponsor as ManageEditSponsor,
     Managements as ManageManagements,
     Management as ManageManagement,
-    EditManagement as ManageEditManagement
+    EditManagement as ManageEditManagement,
+    EditNavigationPage as ManageEditNavigation
 }
