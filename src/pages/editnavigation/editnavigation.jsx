@@ -74,7 +74,7 @@ const EditNavigationForm = ({navigation}) => {
     const editNavigation = async event => {
         event.preventDefault();
 
-        const response = await Axios.post(`${BACK_END.HOST}/api/navigations/add`, formNavigation);
+        const response = await Axios.post(`${BACK_END.HOST}/api/navigations/edit`, formNavigation);
         const data = response.data;
 
         if (data) {
@@ -302,7 +302,6 @@ const EditNavigationForm = ({navigation}) => {
                     </div>
                 </div>
             }
-
             <ManageCard>
                 <button className="btn btn-outline-warning">Dəyiş</button>
             </ManageCard>

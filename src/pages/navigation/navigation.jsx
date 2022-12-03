@@ -1,11 +1,11 @@
 import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
+import {ManageCard} from "../../components";
 import {v4 as uuidv4} from 'uuid';
 import {useRequest} from "../../hooks";
 import {BACK_END} from "../../config/keys";
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
-import {ManageCard} from "../../components";
 
 const NavigationPage = () => {
 
