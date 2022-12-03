@@ -5,6 +5,7 @@ import {useRequest} from "../../hooks";
 import {BACK_END} from "../../config/keys";
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+import {ManageCard} from "../../components";
 
 const NavigationPage = () => {
 
@@ -83,7 +84,7 @@ const NavigationPage = () => {
 
     return (
         <>
-            <div className="manage-card">
+            <ManageCard>
                 <div className="d-flex align-items-center justify-content-between">
                     <p className="fs-4 m-0 font-500">
                         Bölmə
@@ -92,8 +93,8 @@ const NavigationPage = () => {
                         Geri
                     </Link>
                 </div>
-            </div>
-            <div className="manage-card">
+            </ManageCard>
+            <ManageCard>
                 <div className="container-fluid p-0">
                     <div className="row">
                         <div className="col-12 col-md-4">
@@ -176,8 +177,8 @@ const NavigationPage = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="manage-card">
+            </ManageCard>
+            <ManageCard>
                 <div className="d-flex align-items-center justify-content-between">
                     <p className="fs-5 m-0">
                         Alt bölmələr
@@ -186,7 +187,7 @@ const NavigationPage = () => {
                         <i className="fa-solid fa-plus"></i>
                     </button>
                 </div>
-            </div>
+            </ManageCard>
             {subNavigations.length > 0 && <>
                 <div className="manage-card">
                     <div className="container-fluid p-0">
@@ -290,9 +291,9 @@ const NavigationPage = () => {
                     </div>
                 </div>
             </>}
-            <div className="manage-card">
+            <ManageCard>
                 <button className="btn btn-outline-primary" onClick={addNavigationHandler}>Əlavə et</button>
-            </div>
+            </ManageCard>
         </>
     );
 };

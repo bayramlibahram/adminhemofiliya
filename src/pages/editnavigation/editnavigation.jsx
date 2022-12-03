@@ -1,10 +1,12 @@
 import {useCallback, useEffect, useState} from 'react';
 import {ManageCard, Spinner} from "../../components";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import Axios from "axios";
 import {BACK_END} from "../../config/keys";
+import Swal from "sweetalert2";
 
 const EditNavigationPage = () => {
+
     const navigationId = useParams().id;
     const [navigation, setNavigation] = useState(null);
 
@@ -33,6 +35,7 @@ const EditNavigationPage = () => {
 
 const EditNavigationForm = ({navigation}) => {
 
+    const nav = useNavigate();
 
     const [formNavigation, setFormNavigation] = useState(navigation);
 
@@ -44,7 +47,6 @@ const EditNavigationForm = ({navigation}) => {
     }
 
     const inputChangeHandler = (event, _id) => {
-
 
         const newArr = formNavigation.sub_navigations.map(nav => {
             if (nav._id === _id) {
@@ -70,7 +72,23 @@ const EditNavigationForm = ({navigation}) => {
     }
 
     const editNavigation = async event => {
-        event.preventDefault()
+        event.preventDefault();
+
+        const response = await Axios.post(`${BACK_END.HOST}/api/navigations/add`, formNavigation);
+        const data = response.data;
+
+        if (data) {
+            await Swal.fire(
+                'Uğurlu əməliyyat!',
+                `${data.message}`,
+                'success'
+            ).then(() => {
+                nav('/navigations', {replace: true});
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+
     }
 
 
