@@ -4,6 +4,7 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import Axios from "axios";
 import {BACK_END} from "../../config/keys";
 import Swal from "sweetalert2";
+import {v4 as uuidv4} from "uuid";
 
 const EditNavigationPage = () => {
 
@@ -59,8 +60,6 @@ const EditNavigationForm = ({navigation}) => {
             return nav
         });
 
-        console.log(newArr);
-
         setFormNavigation({
             ...formNavigation,
             sub_navigations: [...newArr],
@@ -68,7 +67,22 @@ const EditNavigationForm = ({navigation}) => {
     }
 
     const addSubHandler = () => {
+        const newInput = {
+            _id: uuidv4(),
+            subnav_order_number: 0,
+            subnav_value: "",
+            subnav_name_az: "",
+            subnav_url_az: "",
+            subnav_name_en: "",
+            subnav_url_en: "",
+            subnav_name_ru: "",
+            subnav_url_ru: "",
+        }
 
+        setFormNavigation({
+            ...formNavigation,
+            sub_navigations: [...formNavigation.sub_navigations, {...newInput}]
+        });
     }
 
     const editNavigation = async event => {
