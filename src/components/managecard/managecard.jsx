@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ManageCard = ({children}) => {
+const ManageCard = ({customClass, children}) => {
     return (
-        <div className="manage-card">
+        <div className={`manage-card ${customClass}`}>
             {children}
         </div>
     );

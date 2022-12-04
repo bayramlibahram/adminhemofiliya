@@ -66,7 +66,8 @@ const EditNavigationForm = ({navigation}) => {
         });
     }
 
-    const addSubHandler = () => {
+    const addSubHandler = event => {
+        event.preventDefault();
         const newInput = {
             _id: uuidv4(),
             subnav_order_number: 0,
@@ -83,6 +84,18 @@ const EditNavigationForm = ({navigation}) => {
             ...formNavigation,
             sub_navigations: [...formNavigation.sub_navigations, {...newInput}]
         });
+    }
+
+    const deleteSubNavigation = (event, _id) => {
+        event.preventDefault();
+
+        const newSubNavigationArr = formNavigation.sub_navigations.filter(subNav => subNav._id !== _id);
+
+        setFormNavigation({
+            ...formNavigation,
+            sub_navigations: [...newSubNavigationArr]
+        });
+
     }
 
     const editNavigation = async event => {
@@ -217,96 +230,100 @@ const EditNavigationForm = ({navigation}) => {
                         {formNavigation.sub_navigations.map((input, index) => {
                             return (
                                 <div key={input._id} className="col-12">
-                                    <ManageCard>
-                                        <div className="row">
-                                            <div className="col-12">
-                                                <p className="m-0 fs-6 fw-500 text-primary">
-                                                    № : {index + 1}
-                                                </p>
+                                    <ManageCard customClass="row">
+                                        <div className="col-6">
+                                            <p className="m-0 fs-6 fw-500 text-primary">
+                                                № : {index + 1}
+                                            </p>
+                                        </div>
+                                        <div className="col-6 d-flex justify-content-end">
+                                            <button className="btn btn-sm btn-danger ms-2"
+                                                    onClick={event => deleteSubNavigation(event, input._id)}>
+                                                <i className="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </div>
+                                        <div className="col-12 col-md-4">
+                                            <div className="form-group">
+                                                <label htmlFor="navigation_name_az">Alt bölmə sıra nömrəsi</label>
+                                                <input
+                                                    type="number"
+                                                    name="subnav_order_number"
+                                                    id="subnav_order_number"
+                                                    className="form-control"
+                                                    data-target-id={input._id}
+                                                    value={input.subnav_order_number}
+                                                    onChange={event => inputChangeHandler(event, input._id)}
+                                                />
                                             </div>
-                                            <div className="col-12 col-md-4">
-                                                <div className="form-group">
-                                                    <label htmlFor="navigation_name_az">Alt bölmə sıra nömrəsi</label>
-                                                    <input
-                                                        type="number"
-                                                        name="subnav_order_number"
-                                                        id="subnav_order_number"
-                                                        className="form-control"
-                                                        data-target-id={input._id}
-                                                        value={input.subnav_order_number}
-                                                        onChange={event => inputChangeHandler(event, input._id)}
-                                                    />
-                                                </div>
+                                        </div>
+                                        <div className="col-12 col-md-4">
+                                            <div className="form-group">
+                                                <label htmlFor="navigation_name_az">Alt bölmə dəyəri</label>
+                                                <input
+                                                    type="text"
+                                                    name="subnav_value"
+                                                    id="subnav_value"
+                                                    className="form-control"
+                                                    data-target-id={input._id}
+                                                    value={input.subnav_value}
+                                                    onChange={event => inputChangeHandler(event, input._id)}
+                                                />
                                             </div>
-                                            <div className="col-12 col-md-4">
-                                                <div className="form-group">
-                                                    <label htmlFor="navigation_name_az">Alt bölmə dəyəri</label>
-                                                    <input
-                                                        type="text"
-                                                        name="subnav_value"
-                                                        id="subnav_value"
-                                                        className="form-control"
-                                                        data-target-id={input._id}
-                                                        value={input.subnav_value}
-                                                        onChange={event => inputChangeHandler(event, input._id)}
-                                                    />
-                                                </div>
+                                        </div>
+                                        <div className="col-12 col-md-4">
+                                            <div className="form-group">
+                                                <label htmlFor="navigation_name_az">Alt bölmə ad - AZ</label>
+                                                <input
+                                                    type="text"
+                                                    name="subnav_name_az"
+                                                    id="subnav_name_az"
+                                                    className="form-control"
+                                                    data-target-id={input._id}
+                                                    value={input.subnav_name_az}
+                                                    onChange={event => inputChangeHandler(event, input._id)}
+                                                />
                                             </div>
-                                            <div className="col-12 col-md-4">
-                                                <div className="form-group">
-                                                    <label htmlFor="navigation_name_az">Alt bölmə ad - AZ</label>
-                                                    <input
-                                                        type="text"
-                                                        name="subnav_name_az"
-                                                        id="subnav_name_az"
-                                                        className="form-control"
-                                                        data-target-id={input._id}
-                                                        value={input.subnav_name_az}
-                                                        onChange={event => inputChangeHandler(event, input._id)}
-                                                    />
-                                                </div>
+                                        </div>
+                                        <div className="col-12 col-md-4">
+                                            <div className="form-group">
+                                                <label htmlFor="navigation_name">Alt bölmə linki - AZ</label>
+                                                <input
+                                                    type="text"
+                                                    name="subnav_url_az"
+                                                    id="navigation_name"
+                                                    className="form-control"
+                                                    data-target-id={input._id}
+                                                    value={input.subnav_url_az}
+                                                    onChange={event => inputChangeHandler(event, input._id)}
+                                                />
                                             </div>
-                                            <div className="col-12 col-md-4">
-                                                <div className="form-group">
-                                                    <label htmlFor="navigation_name">Alt bölmə linki - AZ</label>
-                                                    <input
-                                                        type="text"
-                                                        name="subnav_url_az"
-                                                        id="navigation_name"
-                                                        className="form-control"
-                                                        data-target-id={input._id}
-                                                        value={input.subnav_url_az}
-                                                        onChange={event => inputChangeHandler(event, input._id)}
-                                                    />
-                                                </div>
+                                        </div>
+                                        <div className="col-12 col-md-4">
+                                            <div className="form-group">
+                                                <label htmlFor="navigation_name_az">Alt bölmə ad - EN</label>
+                                                <input
+                                                    type="text"
+                                                    name="subnav_name_en"
+                                                    id="subnav_name_en"
+                                                    className="form-control"
+                                                    data-target-id={input._id}
+                                                    value={input.subnav_name_en}
+                                                    onChange={event => inputChangeHandler(event, input._id)}
+                                                />
                                             </div>
-                                            <div className="col-12 col-md-4">
-                                                <div className="form-group">
-                                                    <label htmlFor="navigation_name_az">Alt bölmə ad - EN</label>
-                                                    <input
-                                                        type="text"
-                                                        name="subnav_name_en"
-                                                        id="subnav_name_en"
-                                                        className="form-control"
-                                                        data-target-id={input._id}
-                                                        value={input.subnav_name_en}
-                                                        onChange={event => inputChangeHandler(event, input._id)}
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="col-12 col-md-4">
-                                                <div className="form-group">
-                                                    <label htmlFor="navigation_name">Alt bölmə linki - EN</label>
-                                                    <input
-                                                        type="text"
-                                                        name="subnav_url_en"
-                                                        id="subnav_url_en"
-                                                        className="form-control"
-                                                        data-target-id={input._id}
-                                                        value={input.subnav_url_en}
-                                                        onChange={event => inputChangeHandler(event, input._id)}
-                                                    />
-                                                </div>
+                                        </div>
+                                        <div className="col-12 col-md-4">
+                                            <div className="form-group">
+                                                <label htmlFor="navigation_name">Alt bölmə linki - EN</label>
+                                                <input
+                                                    type="text"
+                                                    name="subnav_url_en"
+                                                    id="subnav_url_en"
+                                                    className="form-control"
+                                                    data-target-id={input._id}
+                                                    value={input.subnav_url_en}
+                                                    onChange={event => inputChangeHandler(event, input._id)}
+                                                />
                                             </div>
                                         </div>
                                     </ManageCard>

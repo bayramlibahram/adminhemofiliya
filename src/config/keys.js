@@ -1,3 +1,3 @@
 export const BACK_END = {
-    HOST: 'https://be.hemofiliya.az'
+    HOST: 'http://localhost:5001'
 }
