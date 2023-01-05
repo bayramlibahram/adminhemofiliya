@@ -66,6 +66,7 @@ const titleIdCreator = title => {
         .replaceAll("!!", "-")
         .replaceAll(" ", "-")
         .replaceAll("  ", "-")
+        .replaceAll(".", "")
         .toLowerCase() + "-" + Date.now().toString();
 }
 
